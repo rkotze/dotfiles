@@ -1,0 +1,290 @@
+[user]
+  name = Richard Kotze
+  initials = rk
+  email = richkotze@outlook.com
+[core]
+  autocrlf = input
+  safecrlf = true
+  excludesfile = /home/dennis/.gitignore_global
+[color]
+  ui = auto
+[push]
+  default = simple
+[fetch]
+  prune = true
+[credential]
+  helper = cache --timeout=3600  ; Cache credentials for 1 hour when using HTTPS.
+[help]
+  autocorrect = 33  ; Autocorrect typos in 3.3 seconds.
+[filter "hawser"]  ; Added by GitHub for Mac, which uses git-hawser.
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+[pager]
+	diff = diff-so-fancy | less --tabs=1,5 -RFX
+	show = diff-so-fancy | less --tabs=1,5 -RFX
+[commit]
+	gpgsign = false
+	verbose = true
+[submodule]
+	fetchJobs = 4
+[diff]
+	compactionHeuristic = true
+[alias]  ; Note: Git ignores aliases that hide existing git commands.
+
+  ### Basics
+
+  br = branch
+  cm = commit
+  co = checkout
+  df = diff
+  st = status
+
+
+  ### Git-Duet (requires https://github.com/git-duet/git-duet)
+
+  ; Paired commit.
+  dci = duet-commit --verbose
+  ci = dci
+  dc = dci
+
+  ; Paired rebase.
+  drb = rebase -i --exec 'git duet-commit --amend --reset-author'
+
+
+  ### Logging
+
+  ; Shows history of an existing or deleted file given its path.
+  history = log --all -- "$1"
+
+  ; Shows the commit message of HEAD.
+  last = log -1
+
+  ; Shows the last n commits.
+  see = !sh -c 'git log -p -$1' -
+
+  ; Shows new commits since last command (e.g. after a `git pull`).
+  new-commits = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+
+  ; Logs commits in a concise graph.
+  lg = !git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+
+  ; Hides merges (shows a linear graph).
+  linear-log = !git lg --no-merges
+
+  ; Lists commits of a topic branch that differ from master.
+  topic-commits = !git lg master..
+
+  ; Lists yours commits made since midnight.
+  today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
+
+  ; Lists yours commits made yesterday.
+  yesterday = !git log --since=yesterday.midnight --until=midnight --author=\"$(git config user.name)\" --oneline
+
+  ; Commit history of last workday; use for daily standup. Uses yesterworkday fish function.
+  standup = !fish -ic 'git log --since "(yesterworkday)" --author "(git config user.name)"'
+
+
+  ### Clone
+
+  ; Recursively clones repo, initializing any submodules.
+  cloner = clone --recursive
+
+  ; Clones the repo with a shallow history (only the last commit).
+  shallow-clone = clone --depth 1
+
+
+  ### Pull / Fetch / Merge
+
+  ; Reapplies new commits from origin so history stays linear during updates.
+  update = pull --rebase
+
+  ; Non fast-forward merge; creates a merge commit.
+  merge-commit = merge --no-ff
+
+
+  ### Push
+
+  ; "Undo" the last push by force pushing the previous commit. Caution: rewrites pushed history.
+  unpush = push -f origin HEAD~1:master
+
+  ; Push tags to remote (e.g. GitHub).
+  push-tags = push --tags
+
+  ; You only live once.
+  yolo = push origin HEAD --force --no-verify
+
+  ; Pushes all branches and sets upstream.
+  go = git push --all --set-upstream origin
+
+  ; Lists committed files to be pushed.
+  to-push = diff --stat origin/master HEAD
+
+
+  ### Staging
+
+  ; Adds all new and modified content to the staging area.
+  add-all = add --all
+
+  ; Adds all modified content in the current directory to the staging area.
+  add-modified = add --update .
+
+  ; Similar to `add-modified` but works on the whole tree, not just cwd.
+  add-all-modified = add --update :/
+
+  ; Adds untracked files to the staging area.
+  add-new = !git add $(git ls-files -o --exclude-standard)
+
+
+  ### Commits
+
+  ; Amends a commit. Adds staged changes to the last commit and rewrites commit msg.
+  amend = commit --amend
+
+  ; Recommits files that were uncommited.
+  recommit = commit --reedit-message ORIG_HEAD
+
+  ; Shows commit count of current branch.
+  commit-count = rev-list --count HEAD
+
+
+  ### Reset
+
+  ; CAUTION: Discards all changes (staged and unstaged) since the last commit.
+  ; Unlike `git checkout` which only undoes changes prior to staging.
+  undo = reset --hard
+
+  ; Undo staging of all or given files.
+  ; Usage: git unstage        ; unstages all
+  ;        git unstage .      ; unstages all
+  ;        git unstage <file> ; unstages file
+  unstage = reset
+  unadd = reset HEAD  ; Alias for unstage.
+
+  ; Undo last commit (keeps staged changes).
+  uncommit = reset --soft HEAD^
+
+  ; Remove last commit.
+  rm-commit = reset --hard HEAD^
+
+  ; Undo a commit amend (with the help of reflog).
+  unamend = reset --soft 'HEAD@{1}'
+
+  ; Resets current branch to the state of the remote master.
+  overwrite = !sh -c 'git fetch --all && git reset --hard origin/master'
+
+
+  ### Branches
+
+  ; Lists all remote branches, sorted by most recent commit date.
+  branches = for-each-ref --sort=-committerdate --format=\"%(refname:short)\t%(color:green)%(committerdate:relative)\t%(color:reset)%(subject) (%(authorname))\" refs/remotes
+
+  ; Lists up to 5 local branches sorted by recent commit activity.
+  recent = for-each-ref --count=5 --sort=-committerdate --format='%(refname:short)' refs/heads
+
+  ; Lists local unmerged branches.
+  unmerged-branches = branch --no-merged
+
+  ; Renames the given local branch.
+  ; If the branch to rename is checked out, just pass the new name.
+  rename-branch = branch -m ; <oldname> <newname>
+
+
+  ### Pull Requests
+
+  ; Opens a PR via hub, after you give a PR title & description.
+  ; Accepts args for explicit title, pull base, head, and more.
+  ; E.g.  git pr -m "Fix gh-123" -b dev -h 123-bug-fix
+  pr = !hub pull-request
+
+  ; Immediately opens a PR with the title and body from the last commit message.
+  pr-msg = !git log -n 1 --pretty=format:'%s%n%n%b' | hub pull-request -F -
+
+  ; Checkout a remote branch by its PR number.
+  ; E.g. git co-pr 123; <review>; git merge pr/123 --ff-only
+  co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
+
+
+  ### Deletion
+
+  ; Removes the given file on the remote branch.
+  rm-remote-file = rm --cached ; <filename>
+
+  ; Removes the given remote branch.
+  rm-remote-branch = !sh -c 'git push origin --delete refs/heads/"$1"' -
+
+  ; Removes the given remote tag.
+  rm-remote-tag = !sh -c 'git push origin --delete refs/tags/"$1"' -
+
+  ; Nukes a branch locally and on the origin remote.
+  delete-branch = !sh -c 'git branch -D "$1" && git push origin --delete "$1"' -
+
+  ; Cleans up unnecessary files and optimizes the local repository.
+  housekeeping = gc --aggressive
+
+  ; Untracks the given file/directory (does not delete file).
+  untrack = rm --cached
+
+
+  ### Diffs
+
+  ; Shows diff of what the current branch will introduce to master.
+  topic-changes = diff master
+
+  ; Shows all diffs (staged and unstaged).
+  diffs = diff HEAD
+
+  ; Shows trailing whitespace and spaces before tabs in (un)staged changes.
+  diff-space = diff --check head
+
+  ; Shows master diff for a given file
+  file-diff = diff master -- $1
+
+
+  ### Misc.
+
+  ; Lists all git aliases.
+  aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+  ; Reveals the source of an alias if it exists.
+  command = !sh -c 'git config alias."$1" || echo "git-$1 is not a command"' -
+
+  ; SHA1 of the given file.
+  hash = hash-object ; <filename>
+
+  ; Adds a note to the last commit.
+  note = notes add
+
+  ; Use for creating a new fca release.
+  tag-fca = !sh -c 'git tag --annotate deploy_production_$(date +%Y%m%d%H%M%S)'
+
+  ; Prunes tracking branches that no longer exist on the remote.
+  prune-origin = fetch --prune origin
+
+  ; Is GitHub asking for your username and password on a push? Use SSH instead of HTTPS.
+  ; E.g. use-ssh dideler/dotiles
+  use-ssh = !sh -c 'git remote set-url origin git@github.com:"$1".git' -
+
+  ; Restores stashed modifications (potentially on top a different commit).
+  ; Note: Discards state of the stash list, unlike `stash apply`.
+  unstash = stash pop
+
+  ; Shows SHA1 of last commit on origin.
+  last-sha-origin = !git ls-remote origin --heads refs/heads/master | cut -f1
+
+  ; Shows the message of the version but not the diff.
+  info = show --no-patch
+
+  ; Shows directory tree in the state when version was made.
+  tree = !bash -c 'object=${1:-head} && git show "$object":' -
+
+  ; Ignores local changes to a versioned file.
+  ignore-versioned-file = update-index --assume-unchanged ; <filename>
+
+  ; Tracks a versioned file that was previously ignored.
+  unignore-versioned-file = !git update-index --no-assume-unchanged
+
