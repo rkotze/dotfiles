@@ -1,0 +1,12 @@
+{
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "terminal.integrated.shellArgs.windows": [
+        "/K",
+        "C:\\tools\\cmder\\vscode.bat"
+    ],
+    "workbench.sideBar.location": "left",
+    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false,
+    "editor.cursorStyle": "block",
+    "editor.fontSize": 16
+}
