@@ -4,6 +4,7 @@
         "/K",
         "C:\\tools\\cmder\\vscode.bat"
     ],
+    "workbench.colorTheme": "Solarized Dark",
     "workbench.sideBar.location": "left",
     "window.zoomLevel": 1,
     "editor.minimap.enabled": false,
