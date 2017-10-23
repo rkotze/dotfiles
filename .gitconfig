@@ -1,11 +1,11 @@
 [user]
   name = Richard Kotze
   initials = rk
-  email = richkotze@outlook.com
+  email = rkotze@emailaddress.com
 [core]
   autocrlf = input
   safecrlf = true
-  excludesfile = /home/dennis/.gitignore_global
+  excludesfile = /home/rkotze/.gitignore_global
 [color]
   ui = auto
 [push]
@@ -42,7 +42,7 @@
   cm = commit
   co = checkout
   df = diff
-  st = status
+  st = status -s
 
 
   ### Git-Duet (requires https://github.com/git-duet/git-duet)
