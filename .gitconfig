@@ -44,6 +44,10 @@
   df = diff
   st = status -s
 
+  ### Resolve merge conflicts quick
+
+  ours = git checkout --ours '$1'
+  theirs = git checkout theirs '$1'
 
   ### Git-Duet (requires https://github.com/git-duet/git-duet)
 
