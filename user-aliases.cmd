@@ -19,5 +19,8 @@ ttdoing=ttrello mycards richardkotze j8snZHxa WOM -f doing
 
 nlistg=npm list -g --depth=0
 
+;= rem open github search link for commits e.g gitsearch facebook/react myquery
+gitsearch=explorer "https://github.com/"$1"/search?o=desc&q="$2"&s=committer-date&type=Commits"
+
 ;= rem Search for all conflicting files
 gitcon=grep -lr --exclude-dir=node_modules "<<<<<<<" $1
