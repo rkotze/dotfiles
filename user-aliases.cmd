@@ -19,8 +19,11 @@ ttdoing=ttrello mycards richardkotze j8snZHxa WOM -f doing
 
 nlistg=npm list -g --depth=0
 
-;= rem open github search link for commits e.g gitsearch facebook/react myquery
+;= rem open github search URL for commits e.g. gitsearch facebook/react myquery
 gitsearch=explorer "https://github.com/"$1"/search?o=desc&q="$2"&s=committer-date&type=Commits"
+
+;= rem Copy GitHub search URL to Clipboard without quotes e.g. linkcopy facebook/react myquery
+linkcopy=echo|set /p="https://github.com/$1/search?o=desc&q=$2&s=committer-date&type=Commits" | clip
 
 ;= rem Search for all conflicting files
 gitcon=grep -lr --exclude-dir=node_modules "<<<<<<<" $1
