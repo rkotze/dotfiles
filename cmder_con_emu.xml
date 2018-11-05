@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2018-08-20 14:47:17" build="180416">
+		<key name=".Vanilla" modified="2018-11-05 22:38:55" build="180422">
 			<value name="Language" type="string" data="en"/>
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
@@ -138,8 +138,8 @@
 			<value name="ConWnd X" type="long" data="7"/>
 			<value name="ConWnd Y" type="long" data="0"/>
 			<value name="LastMonitor" type="string" data="0,0,1920,1040"/>
-			<value name="ConWnd Width" type="dword" data="00000074"/>
-			<value name="ConWnd Height" type="dword" data="0000003a"/>
+			<value name="ConWnd Width" type="dword" data="00000050"/>
+			<value name="ConWnd Height" type="dword" data="00000039"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="QuakeStyle" type="hex" data="00"/>
 			<value name="Restore2ActiveMon" type="hex" data="00"/>
@@ -170,6 +170,7 @@
 			<value name="ComSpec.Path" type="string" data=""/>
 			<value name="EnvironmentSet" type="multi">
 				<line data="set PATH=%ConEmuBaseDir%\Scripts;%PATH%"/>
+				<line data="set PROJECTS=E:\projects"/>
 			</value>
 			<value name="CTS.Intelligent" type="hex" data="01"/>
 			<value name="CTS.IntelligentExceptions" type="string" data="far|vim.exe"/>
@@ -386,7 +387,7 @@
 			<value name="Update.DownloadPath" type="string" data="%TEMP%\ConEmu"/>
 			<value name="Update.LeavePackages" type="hex" data="00"/>
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
-			<key name="HotKeys" modified="2018-08-20 14:47:17" build="180416">
+			<key name="HotKeys" modified="2018-11-05 22:38:55" build="180422">
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="00000011"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -399,6 +400,7 @@
 				<value name="SetFocusGui" type="dword" data="00000000"/>
 				<value name="SetFocusChild" type="dword" data="00000000"/>
 				<value name="ChildSystemMenu" type="dword" data="000011ff"/>
+				<value name="CheckUpdates" type="dword" data="00105b55"/>
 				<value name="Multi.NewConsole" type="dword" data="00000000"/>
 				<value name="Multi.NewConsoleShift" type="dword" data="00001154"/>
 				<value name="Multi.CmdKey" type="dword" data="00000000"/>
@@ -581,18 +583,18 @@
 				<value name="DndRKey" type="hex" data="A2"/>
 				<value name="WndDragKey" type="dword" data="00121101"/>
 			</key>
-			<key name="Tasks" modified="2018-08-20 14:47:17" build="180416">
+			<key name="Tasks" modified="2018-11-05 22:38:55" build="180422">
 				<value name="Count" type="long" data="5"/>
-				<key name="Task1" modified="2018-08-20 14:47:17" build="180416">
+				<key name="Task1" modified="2018-11-05 22:38:55" build="180422">
 					<value name="Name" type="string" data="{cmd}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data='/icon "%CMDER_ROOT%\cmder.exe"'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat"  -new_console:d:%USERPROFILE%'/>
+					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat"  /START'/>
 				</key>
-				<key name="Task2" modified="2018-08-20 14:47:17" build="180416">
+				<key name="Task2" modified="2018-11-05 22:38:55" build="180422">
 					<value name="Name" type="string" data="{PowerShell}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -601,7 +603,7 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data='PowerShell -ExecutionPolicy Bypass -NoLogo -NoProfile -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;" -new_console:d:"%USERPROFILE%"'/>
 				</key>
-				<key name="Task3" modified="2018-08-20 14:47:17" build="180416">
+				<key name="Task3" modified="2018-11-05 22:38:55" build="180422">
 					<value name="Name" type="string" data="{PowerShell as Admin}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -610,32 +612,32 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data='*PowerShell -ExecutionPolicy Bypass -NoLogo -NoProfile -NoExit -Command "Invoke-Expression &apos;. &apos;&apos;%ConEmuDir%\..\profile.ps1&apos;&apos;&apos;" -new_console:d:"%USERPROFILE%"'/>
 				</key>
-				<key name="Task4" modified="2018-08-20 14:47:17" build="180416">
+				<key name="Task4" modified="2018-11-05 22:38:55" build="180422">
 					<value name="Name" type="string" data="{Three split}"/>
 					<value name="Flags" type="dword" data="00000000"/>
-					<value name="Hotkey" type="dword" data="00121133"/>
+					<value name="Hotkey" type="dword" data="00001233"/>
 					<value name="GuiArgs" type="string" data='/icon "%CMDER_ROOT%\cmder.exe"'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="2"/>
 					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat" -new_console:s:d:%USERPROFILE%'/>
 					<value name="Cmd2" type="string" data='cmd /k "%ConEmuDir%\..\init.bat" -new_console:sV:d:%USERPROFILE%'/>
 				</key>
-				<key name="Task5" modified="2018-08-20 14:47:17" build="180416">
+				<key name="Task5" modified="2018-11-05 22:38:55" build="180422">
 					<value name="Name" type="string" data="{Two split}"/>
 					<value name="Flags" type="dword" data="00000004"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="Hotkey" type="dword" data="00001232"/>
 					<value name="GuiArgs" type="string" data='/icon "%CMDER_ROOT%\cmder.exe"'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat" -new_console:sV:d:%USERPROFILE%'/>
+					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat" -new_console:sV:d:%PROJECTS%'/>
 				</key>
 			</key>
-			<key name="Apps" modified="2018-08-20 14:47:17" build="180416">
+			<key name="Apps" modified="2018-11-05 22:38:55" build="180422">
 				<value name="Count" type="long" data="0"/>
 			</key>
-			<key name="Colors" modified="2018-08-20 14:47:17" build="180416">
+			<key name="Colors" modified="2018-11-05 22:38:55" build="180422">
 				<value name="Count" type="long" data="1"/>
-				<key name="Palette1" modified="2018-08-20 14:47:17" build="180416">
+				<key name="Palette1" modified="2018-11-05 22:38:55" build="180422">
 					<value name="Name" type="string" data="Monokai"/>
 					<value name="TextColorIdx" type="hex" data="10"/>
 					<value name="BackColorIdx" type="hex" data="10"/>
