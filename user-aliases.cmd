@@ -27,3 +27,6 @@ linkcopy=echo|set /p="https://github.com/$1/search?o=desc&q=$2&s=committer-date&
 
 ;= rem Search for all conflicting files
 gitcon=grep -lr --exclude-dir=node_modules "<<<<<<<" $1
+
+;= rem convert LF to CRLF
+lftocr=git status -s | sed 's/M //g' | xargs unix2dos
