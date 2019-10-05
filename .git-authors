@@ -1,4 +1,0 @@
-authors:
-  rk: Richard Kotze
-email_template:
-  '{{with replace .Name " " "." -1}}{{toLower .}}{{end}}@findmypast.com'
