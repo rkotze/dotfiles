@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2018-11-05 22:38:55" build="180422">
+		<key name=".Vanilla" modified="2020-02-13 17:58:43" build="180626">
 			<value name="Language" type="string" data="en"/>
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
@@ -135,11 +135,11 @@
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="IntegralSize" type="hex" data="00"/>
 			<value name="WindowMode" type="dword" data="0000051f"/>
-			<value name="ConWnd X" type="long" data="7"/>
-			<value name="ConWnd Y" type="long" data="0"/>
+			<value name="ConWnd X" type="long" data="103"/>
+			<value name="ConWnd Y" type="long" data="-1"/>
 			<value name="LastMonitor" type="string" data="0,0,1920,1040"/>
-			<value name="ConWnd Width" type="dword" data="00000050"/>
-			<value name="ConWnd Height" type="dword" data="00000039"/>
+			<value name="ConWnd Width" type="dword" data="0000004e"/>
+			<value name="ConWnd Height" type="dword" data="0000003a"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="QuakeStyle" type="hex" data="00"/>
 			<value name="Restore2ActiveMon" type="hex" data="00"/>
@@ -308,7 +308,7 @@
 			<value name="TabFontHeight" type="long" data="18"/>
 			<value name="SaveAllEditors" type="string" data=""/>
 			<value name="ToolbarAddSpace" type="long" data="0"/>
-			<value name="TabConsole" type="string" data="     %n     "/>
+			<value name="TabConsole" type="string" data="%f"/>
 			<value name="TabModifiedSuffix" type="string" data="[*]"/>
 			<value name="TabSkipWords" type="string" data="Administrator:|Администратор:"/>
 			<value name="TabPanels" type="string" data="&lt;%c&gt; %s"/>
@@ -583,16 +583,16 @@
 				<value name="DndRKey" type="hex" data="A2"/>
 				<value name="WndDragKey" type="dword" data="00121101"/>
 			</key>
-			<key name="Tasks" modified="2018-11-05 22:38:55" build="180422">
-				<value name="Count" type="long" data="5"/>
-				<key name="Task1" modified="2018-11-05 22:38:55" build="180422">
+			<key name="Tasks" modified="2020-02-13 17:58:43" build="180626">
+				<value name="Count" type="long" data="6"/>
+				<key name="Task1" modified="2020-02-13 17:58:43" build="180626">
 					<value name="Name" type="string" data="{cmd}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data='/icon "%CMDER_ROOT%\cmder.exe"'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat"  /START'/>
+					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat" /START'/>
 				</key>
 				<key name="Task2" modified="2018-11-05 22:38:55" build="180422">
 					<value name="Name" type="string" data="{PowerShell}"/>
@@ -622,14 +622,23 @@
 					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat" -new_console:s:d:%USERPROFILE%'/>
 					<value name="Cmd2" type="string" data='cmd /k "%ConEmuDir%\..\init.bat" -new_console:sV:d:%USERPROFILE%'/>
 				</key>
-				<key name="Task5" modified="2018-11-05 22:38:55" build="180422">
+				<key name="Task5" modified="2020-02-13 17:58:43" build="180626">
 					<value name="Name" type="string" data="{Two split}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00001232"/>
 					<value name="GuiArgs" type="string" data='/icon "%CMDER_ROOT%\cmder.exe"'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat" -new_console:sV:d:%PROJECTS%'/>
+					<value name="Cmd1" type="string" data='cmd /k "%ConEmuDir%\..\init.bat" -new_console:sV:d: /START'/>
+				</key>
+				<key name="Task6" modified="2020-02-13 17:58:43" build="180626">
+					<value name="Name" type="string" data="{Git bash}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data='/icon "%CMDER_ROOT%\cmder.exe"'/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd1" type="string" data='"C:\Program Files\Git\bin\sh.exe" -l -new_console:d:%USERPROFILE%'/>
 				</key>
 			</key>
 			<key name="Apps" modified="2018-11-05 22:38:55" build="180422">
