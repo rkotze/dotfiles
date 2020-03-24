@@ -21,7 +21,7 @@
 `cd ~/.oh-my-zsh/themes/agnoster.zsh-theme`
 
 - search prompt_end()
-- modify print -n "%{%f%}" to print -n "\n%{%f%}" (just add \n )
+- modify `print -n "%{%f%}"` to `print -n "\n%{%f%}"` (just add `\n` )
 - save and re-open terminal
 
 ## Cross platform
