@@ -14,6 +14,16 @@
 
 - Clip board manager [Clipy](https://github.com/Clipy/Clipy)
 
+## Customise .zsh terminal
+
+### Command input on next line:
+
+`cd ~/.oh-my-zsh/themes/agnoster.zsh-theme`
+
+- search prompt_end()
+- modify print -n "%{%f%}" to print -n "\n%{%f%}" (just add \n )
+- save and re-open terminal
+
 ## Cross platform
 
 - `npm i git-mob -g`
