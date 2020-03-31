@@ -17,5 +17,6 @@
         "statusBar.background": "#004f57",
         "statusBarItem.hoverBackground": "#00b6ad",
         "statusBar.foreground": "#e7e7e7"
-     }
+     },
+     "workbench.editor.showTabs": false
 }
