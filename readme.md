@@ -24,6 +24,11 @@
 - modify `print -n "%{%f%}"` to `print -n "\n%{%f%}"` (just add `\n` )
 - save and re-open terminal
 
+### auto suggestion plugin
+
+- Follow install instructions: [auto suggessions](https://github.com/zsh-users/zsh-autosuggestions)
+- Plugin list is space separated `plugins=(git zsh-autosuggestions)`
+
 ## Cross platform
 
 - `npm i git-mob -g`
