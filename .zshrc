@@ -137,3 +137,8 @@ prompt_context() {
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
+
+# Processor id based on PORT
+find_p() {
+  lsof -t -i tcp:$1
+}
