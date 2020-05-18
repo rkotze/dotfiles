@@ -12,6 +12,7 @@
     "editor.minimap.enabled": false,
     "editor.cursorStyle": "block",
     "editor.fontSize": 16,
+    "editor.tabSize": 2,
     "cSpell.language": "en-GB",
     "workbench.colorCustomizations": {
         "statusBar.background": "#004f57",
