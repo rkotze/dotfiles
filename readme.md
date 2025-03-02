@@ -24,7 +24,7 @@ Open Finder, to your user folder and then press the following keys `command + sh
 ## VSCode
 
 Add the following to the `$PATH` var in your `.zshrc` file. `/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin`.
-StudioStudioStudiofollowing to the
+
 ## nvm setup
 
 - `brew install nvm`
