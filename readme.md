@@ -13,7 +13,30 @@
 
 ## Mac
 
-- Clip board manager [Clipy](https://github.com/Clipy/Clipy)
+Clipboard manager [Github Clipy (old)](https://github.com/Clipy/Clipy)
+
+New to use is Maccy. `brew install maccy` [Github Maccy](https://github.com/p0deje/Maccy)
+
+## Show hidden/.files in Finder
+
+Open Finder, to your user folder and then press the following keys `command + shift + period`Studio
+
+## VSCode
+
+Add the following to the `$PATH` var in your `.zshrc` file. `/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin`.
+StudioStudioStudiofollowing to the
+## nvm setup
+
+- `brew install nvm`
+
+Add following to `.zshrc`:
+
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
+```
+
+Reload the terminal.
 
 ## Customise .zsh terminal
 
