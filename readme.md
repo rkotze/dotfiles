@@ -46,7 +46,19 @@ Reload the terminal.
 
 - search prompt_end()
 - modify `print -n "%{%f%}"` to `print -n "\n%{%f%}"` (just add `\n` )
-- save and re-open terminal
+- save and re-open the terminal
+
+### Add time to context
+
+`cd ~/.oh-my-zsh/themes/agnoster.zsh-theme`
+
+Add the function and then call it in the `build_prompt` at the end of the file.
+
+```
+prompt_time() {
+  prompt_segment "$AGNOSTER_CONTEXT_BG" "$AGNOSTER_CONTEXT_FG" %T
+}
+```
 
 ### auto suggestion plugin
 
